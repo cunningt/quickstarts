@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<arquillian xmlns="http://jboss.com/arquillian"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:jboss="urn:arq:org.jboss.arquillian.container.jbossas.remote_6">
+ <engine>
+      <deploymentExportPath>/tmp/</deploymentExportPath>
+   </engine>
+
+	<jboss:container id="server-1">
+		<localDeploymentBindAddress>ost</localDeploymentBindAddress>
+		<remoteServerAddress>localhost</remoteServerAddress>
+		<remoteServerHttpPort>8080</remoteServerHttpPort>
+	</jboss:container>
+
+</arquillian>
