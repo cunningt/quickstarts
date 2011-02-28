@@ -2,8 +2,6 @@ package org.switchyard.components;
 
 import java.io.File;
 
-import org.switchyard.components.TemperatureConverter;
-
 import org.junit.runner.RunWith;
 import org.junit.Assert;
 import org.junit.Test;
