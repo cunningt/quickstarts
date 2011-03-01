@@ -186,6 +186,30 @@
           <type>pom</type>
         </dependency>
       </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+              <systemProperties>
+                <property>
+                  <name>java.naming.factory.initial</name>
+                  <value>org.jnp.interfaces.NamingContextFactory</value>
+                </property>
+                <property>
+                  <name>java.naming.factory.url.pkgs</name>
+                  <value>org.jboss.naming:org.jnp.interfaces</value>
+                </property>
+                <property>
+                  <name>java.naming.provider.url</name>
+                  <value>jnp://localhost:1099</value>
+                </property>
+              </systemProperties>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
   </profiles>
   <repositories>
