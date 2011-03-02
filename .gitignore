@@ -6,3 +6,4 @@ bin/
 components-file/bin/
 core/bin/
 .checkstyle
+arquillian/transaction.log
