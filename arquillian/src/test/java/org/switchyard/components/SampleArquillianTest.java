@@ -55,10 +55,6 @@ import org.junit.runner.RunWith;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.switchyard.quickstarts.m1app.InventoryService;
-import org.switchyard.quickstarts.m1app.OrderService;
-import org.switchyard.component.bean.Reference;
-
 import java.util.Properties;
 import java.util.zip.ZipFile;
 import org.apache.log4j.Logger;
@@ -113,9 +109,8 @@ public class SampleArquillianTest {
 
        Properties prop = System.getProperties();
        String m1appLocation = (String) prop.get(BUILD_DIRECTORY);       
-       
+       System.out.println("m1applocation=" + m1appLocation);
        _logger.debug("Testing " + m1appLocation + File.separator + JAR_FILE_NAME);
-       System.out.println("Testing " + m1appLocation + File.separator + JAR_FILE_NAME);
        File m1app = new File(m1appLocation + File.separator + JAR_FILE_NAME);
        JavaArchive javaArchive = ShrinkWrap.create(JavaArchive.class, "test.jar");
        try {
@@ -135,14 +130,18 @@ public class SampleArquillianTest {
 	HttpClient client = new HttpClient();
 	String output;
 	try {
+	    
             PostMethod postMethod = new PostMethod("http://localhost:18001/OrderService");
             
             postMethod.setRequestEntity(new InputStreamRequestEntity(_requestStream, "text/xml; charset=utf-8"));
             client.executeMethod(postMethod);
             output = postMethod.getResponseBodyAsString();
      
+            System.out.println("[" + output + "]");
+            
             XMLUnit.setIgnoreWhitespace(true);
             XMLAssert.assertXMLEqual(_expectedResponseReader, new StringReader(output));
+            
 	} catch (Exception e) {
 	  Assert.fail(e.toString());
 	}
